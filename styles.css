@@ -1,0 +1,445 @@
+:root {
+    --font-body: "Didact Gothic", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    --font-serif: "Antic Didone", serif;
+    --font-script: "Great Vibes", cursive;
+
+    --blue: #676F97;
+    /* фон секций как на макете */
+    --blue-dark: #3f4664;
+    /* темнее для кнопок */
+    --cream: #f4f0e7;
+    /* светлый блок формы */
+    --ink: #161824;
+    --white: #ffffff;
+
+    --radius: 22px;
+    --stroke: rgba(245, 38, 38, 0.898);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--ink);
+}
+
+.page {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* general */
+.container {
+    width: min(520px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+.section {
+    padding: 40px 0;
+}
+
+.h2 {
+    margin: 0 0 18px 0;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    font-size: 40px;
+    line-height: 60px;
+}
+
+.h2--center {
+    text-align: center;
+
+}
+
+.h2--white {
+    color: rgba(255, 255, 255, .95);
+}
+
+/* COVER */
+.cover {
+    position: relative;
+    aspect-ratio: 10 / 19;
+    width: 100%;
+}
+
+.cover__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.cover__card {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 26px 18px;
+}
+
+.cover__card-inner {
+    position: relative;
+    width: min(285px, 86vw);
+    aspect-ratio: 285 / 614;
+    background: #EFE9E0;
+    border: 5px solid #676F97;
+    border-radius: 120px;
+    padding: 34px 18px 22px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.cover__card-inner::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    /* расстояние между линиями */
+    border: 3px solid #676F97;
+    border-radius: 110px;
+    /* чуть меньше */
+    pointer-events: none;
+}
+
+.cover__top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 46px;
+}
+
+.cover__title {
+    font-family: var(--font-serif);
+    /* Antic Didone */
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    font-size: 50px;
+    line-height: 1.05;
+    color: #050E45;
+    margin-top: 6px;
+}
+
+.cover__title span {
+    display: block;
+}
+
+.title-anna {
+    transform: translateX(-45px) translateY(14px);
+}
+
+.cover__script {
+    font-family: var(--font-script);
+    /* Great Vibes */
+    font-size: 56px;
+    line-height: 1;
+    margin-top: -8px;
+    color: #050E45;
+    display: inline-block;
+    transform: translateX(68px) translateY(1px);
+}
+
+.cover__text {
+    margin: 18px auto 0;
+    font-size: 16px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    color: #050E45;
+    line-height: 1.45;
+    margin-top: 58px;
+
+}
+
+.cover__date {
+    margin: auto;
+    font-size: 28px;
+    letter-spacing: .12em;
+    color: #2a2f48;
+    padding-bottom: 4px;
+}
+
+/* BLUE SECTIONS */
+.section--blue {
+    background: var(--blue);
+    color: rgba(255, 255, 255, .92);
+}
+
+.section--light {
+    background: var(--cream);
+}
+
+/* PLACE */
+
+
+.photo-card__img {
+    width: 100%;
+    height: 283px;
+    object-fit: cover;
+    border-radius: 22px;
+    display: block;
+}
+
+.addr {
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin: 16px 0 18px;
+    color: rgba(255, 255, 255, .85);
+}
+
+/* PROGRAM */
+.program {
+    margin-top: 8px;
+}
+
+.program__item {
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: none;
+}
+
+.program__head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.program__item:last-child {
+    border-bottom: none;
+}
+
+.program__time,
+.program__title {
+    text-transform: uppercase;
+    letter-spacing: 0em;
+    color: rgba(255, 255, 255, .95);
+    font-size: 24px;
+}
+
+.program__text {
+    font-size: 14px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, .82);
+}
+
+/* DRESS CODE */
+.section--dress {
+    padding-bottom: 26px;
+}
+
+.dress-note {
+    font-family: var(--font-serif);
+    /* Antic Didone под Dress code */
+    text-align: center;
+    letter-spacing: 0em;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, .9);
+    margin: 0 0 13px 0;
+}
+
+.dress-image {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.dress-image img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 12px 22px rgba(0, 0, 0, .25));
+}
+
+/* FORM */
+.small {
+    font-size: 14px;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: #676F97;
+    line-height: 1.6;
+    margin: 0 0 18px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.form {
+    display: grid;
+    gap: 18px;
+    margin-top: 10px;
+}
+
+#form .h2 {
+    color: #676F97;
+}
+
+.field {
+    display: grid;
+    gap: 10px;
+}
+
+.field__label {
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #676F97;
+    margin-bottom: 16px;
+}
+
+.field__input {
+    border: none;
+    border-bottom: 1px solid #676F97;
+    background: transparent;
+    padding: 10px 4px;
+    font-size: 16px;
+    outline: none;
+    font-family: var(--font-body);
+}
+
+.radio {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: #676F97;
+    line-height: 1.4;
+}
+
+input[type="radio"] {
+    accent-color: #c2f50a;
+}
+
+.radio input {
+    margin-top: 2px;
+}
+
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .28);
+    background: #F6F2E5;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn--pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.btn--dark {
+    border: none;
+    background: #676F97;
+    color: #fff;
+    font-size: 15px;
+}
+
+.form__note {
+    min-height: 18px;
+    text-align: center;
+    color: rgba(22, 24, 36, .62);
+    font-size: 13px;
+}
+
+.thanks {
+    text-align: center;
+    margin-top: 6px;
+}
+
+.thanks__text {
+    font-size: 20px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    color: #676F97;
+}
+
+.thanks__heart {
+    width: 44px;
+    height: auto;
+    display: inline-block;
+}
+
+/* mobile tuning */
+@media (max-width: 420px) {
+    .cover__title {
+        font-size: 36px;
+    }
+
+    .cover__script {
+        font-size: 52px;
+    }
+
+    .dress-grid {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 520px) {
+    .cover {
+        aspect-ratio: 9 / 16;
+    }
+}
+
+/* ===== DESKTOP CENTER LAYOUT ===== */
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: #e9e6de;
+    /* мягкий фон по краям */
+}
+
+/* сама "карточка" приглашения */
+.page {
+    width: 100%;
+    max-width: 430px;
+    /* ширина мобильного приглашения */
+    background: var(--cream);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .18);
+}
+
+/* чтобы на ПК было "воздуха" сверху и снизу */
+@media (min-width: 768px) {
+    .page {
+        margin: 30px 0;
+        border-radius: 26px;
+        overflow: hidden;
+    }
+}
