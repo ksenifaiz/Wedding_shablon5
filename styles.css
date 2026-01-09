@@ -330,7 +330,7 @@ body {
 }
 
 input[type="radio"] {
-    accent-color: #c2f50a;
+    accent-color: #676F97;
 }
 
 .radio input {
@@ -442,4 +442,5 @@ input[type="radio"] {
         border-radius: 26px;
         overflow: hidden;
     }
+
 }
