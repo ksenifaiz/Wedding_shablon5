@@ -1,3 +1,9 @@
+if (window.__guestFormInit) {
+  console.log("guestForm already initialized");
+} else {
+  window.__guestFormInit = true;
+  // дальше весь твой код
+}
 const form = document.getElementById("guestForm");
 const note = document.getElementById("note");
 
@@ -18,53 +24,56 @@ if (form && note) {
         // Тут позже подключим отправку в Telegram / Google Apps Script
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4ybFL9dW-QsZj3_XLz21iKxdx11VjNcMCObnTcoQc9f2N9SfxOZ8RA-o0SbuteVkuwQ/exec";
 
-const SCRIPT_URL = "ВСТАВЬ_ТВОЙ_WEB_APP_URL"; // .../exec
-
 const form = document.getElementById("guestForm");
 const note = document.getElementById("note");
+const btn = form.querySelector('button[type="submit"]');
+
+let sending = false;
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  if (sending) return;     // ✅ не даст отправить 2-3 раза
+  sending = true;
+  btn.disabled = true;
+
   const fd = new FormData(form);
 
+  // ⚠️ добавляем requestId для защиты на сервере
   const payload = {
-    name: (fd.get("name") || "").toString().trim(),
-    attend: (fd.get("attend") || "").toString().trim(),
-    drink: (fd.get("drink") || "").toString().trim(),
-    // website: "" // если добавишь honeypot
+    requestId: ${Date.now()}_${Math.random().toString(16).slice(2)},
+    name: (fd.get("name") || "").trim(),
+    attend: (fd.get("attend") || "").trim(),
+    drink: (fd.get("drink") || "").trim(),
   };
 
-  if (!payload.name || !payload.attend) {
-    note.textContent = "Заполните имя и отметьте присутствие.";
-    return;
-  }
+  note.textContent = "Отправляю...";
 
   try {
-    note.textContent = "Отправляю...";
-
+    // (ниже будет спец-версия для телефона)
     const res = await fetch(SCRIPT_URL, {
       method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" }, // ✅ без preflight на iOS
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(payload),
     });
 
     const text = await res.text();
-    let data = {};
-    try { data = JSON.parse(text); } catch (e) {}
+    const data = JSON.parse(text);
 
-    if (!res.ok || data.ok === false) {
-      throw new Error(data.error || `HTTP ${res.status}: ${text}`);
-    }
+    if (!res.ok  data.ok === false) throw new Error(data.error  "Ошибка");
 
     note.textContent = "Спасибо! Ответ отправлен ✅";
     form.reset();
   } catch (err) {
     console.error(err);
     note.textContent = "Ошибка отправки: " + err.message;
+  } finally {
+    sending = false;
+    btn.disabled = false;
   }
 });
     });
 
 }
+
 
